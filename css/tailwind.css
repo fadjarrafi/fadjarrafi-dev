@@ -33,3 +33,13 @@ input:-webkit-autofill:focus {
 .katex-display {
   overflow: auto hidden;
 }
+
+.capsule {
+  display: flex;
+  /* justify-content: start; */
+  border-radius: 5px;
+  background-color: transparent;
+  justify-items: end;
+  width: 150px;
+  padding: 10px;
+}
