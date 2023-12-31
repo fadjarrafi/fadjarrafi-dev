@@ -91,7 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <script
         async
         src="https://us.umami.is/script.js"
-        data-website-id="52f4aa1e-d8f2-4087-a164-a199f3679fac"
+        data-website-id={process.env.NEXT_UMAMI_ID}
       ></script>
       <body className="bg-white text-black antialiased dark:bg-[#141414] dark:text-white">
         <ThemeProviders>
