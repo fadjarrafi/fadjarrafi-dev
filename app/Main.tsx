@@ -14,7 +14,7 @@ export default function Home({ posts }) {
         <div className="space-y-10">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
             <span className="wave">👋🏻</span>, <span>I'm </span>
-            <span className="text-green-500 dark:text-green-400">Fadjar</span>
+            <span className="text-green-500 dark:text-lime-400">Fadjar</span>
           </h1>
           <p>Welcome to my personal site, where I share what I have learned.</p>
           <Capsule />

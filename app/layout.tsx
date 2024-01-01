@@ -93,7 +93,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         src="https://us.umami.is/script.js"
         data-website-id={process.env.NEXT_UMAMI_ID}
       ></script>
-      <body className="bg-white text-black antialiased dark:bg-[#141414] dark:text-white">
+      <body className="bg-white text-black antialiased dark:bg-[#16232C] dark:text-white">
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
           <SectionContainer>
