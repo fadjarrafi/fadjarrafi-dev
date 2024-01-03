@@ -1,7 +1,7 @@
 import Image from './Image'
 import Link from './Link'
 
-const Card = ({ title, description, imgSrc, href }) => (
+const Card = ({ title, description, imgSrc, href, techImg }) => (
   <div className="md max-w-[544px] p-4 md:w-1/2">
     <div
       className={`${
@@ -39,6 +39,21 @@ const Card = ({ title, description, imgSrc, href }) => (
           )}
         </h2>
         <p className="prose mb-3 max-w-none text-gray-500 dark:text-gray-400">{description}</p>
+        {techImg && (
+          <div className="flex gap-3 py-6">
+            {/* Iterate over the keys of techImg and render an Image component for each technology */}
+            {Object.keys(techImg).map((tech, index) => (
+              <Image
+                key={index}
+                alt={tech}
+                src={techImg[tech]}
+                className="stack-label bg-lime-300 object-cover object-center dark:bg-lime-100"
+                width={50}
+                height={50}
+              />
+            ))}
+          </div>
+        )}
         {href && (
           <Link
             href={href}

@@ -3,21 +3,22 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 // import NewsletterForm from 'pliny/ui/NewsletterForm'
-import Capsule from '@/components/Capsule'
-
 const MAX_DISPLAY = 5
 
 export default function Home({ posts }) {
   return (
     <>
       <div className="mt-7 flex items-center justify-between space-y-4">
-        <div className="space-y-10">
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            <span className="wave">👋🏻</span>, <span>I'm </span>
-            <span className="text-green-500 dark:text-lime-400">Fadjar</span>
+        <div className="space-y-5 md:space-y-8">
+          <h1 className="text-4xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+            {/* <span className="wave">👋🏻</span>, <span>I'm </span> */}
+            <span className="wave">Hey</span>, <span>I'm </span>
+            <span className="text-lime-500 dark:text-lime-400">Fadjar</span>
           </h1>
-          <p>Welcome to my personal site, where I share what I have learned.</p>
-          <Capsule />
+          <p>
+            I'm a Web Developer from Indonesia. This is my personal site, where I share what I have
+            learned through writing.
+          </p>
           <Link
             href="/about"
             className="mt-6 inline-block rounded bg-gradient-to-r from-green-400 to-blue-500 px-4 py-2 font-bold text-white hover:from-pink-500 hover:to-yellow-500"

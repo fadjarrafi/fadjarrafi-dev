@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 import type { Authors } from 'contentlayer/generated'
 import SocialIcon from '@/components/social-icons'
 import Image from '@/components/Image'
+import Capsule from '@/components/Capsule'
 
 interface Props {
   children: ReactNode
@@ -42,6 +43,10 @@ export default function AuthorLayout({ children, content }: Props) {
           </div>
           <div className="prose max-w-none pb-8 pt-8 dark:prose-invert xl:col-span-2">
             {children}
+            <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">
+              This is the tech that I have learned and used:
+            </h3>
+            <Capsule />
           </div>
         </div>
       </div>

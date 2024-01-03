@@ -43,3 +43,10 @@ input:-webkit-autofill:focus {
   width: 150px;
   padding: 10px;
 }
+
+.stack-label {
+  display: flex;
+  border-radius: 5px;
+  justify-items: end;
+  padding: 10px;
+}

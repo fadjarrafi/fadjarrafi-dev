@@ -10,7 +10,8 @@ import Footer from '@/components/Footer'
 import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
-import Script from 'next/script'
+import { Suspense } from 'react'
+import Loading from './loading'
 
 const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -93,19 +94,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         src="https://us.umami.is/script.js"
         data-website-id={process.env.NEXT_UMAMI_ID}
       ></script>
-      <body className="bg-white text-black antialiased dark:bg-[#16232C] dark:text-white">
-        <ThemeProviders>
-          <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
-          <SectionContainer>
-            <div className="flex h-screen flex-col justify-between font-sans">
-              <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
-                <Header />
-                <main className="mb-auto">{children}</main>
-              </SearchProvider>
-              <Footer />
-            </div>
-          </SectionContainer>
-        </ThemeProviders>
+      <body className="bg-lime-50 text-black antialiased dark:bg-[#16232C] dark:text-white">
+        <Suspense fallback={<Loading />}>
+          <ThemeProviders>
+            <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
+            <SectionContainer>
+              <div className="flex h-screen flex-col justify-between font-sans">
+                <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
+                  <Header />
+                  <main className="mb-auto">{children}</main>
+                </SearchProvider>
+                <Footer />
+              </div>
+            </SectionContainer>
+          </ThemeProviders>
+        </Suspense>
       </body>
     </html>
   )
