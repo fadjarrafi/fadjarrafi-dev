@@ -13,7 +13,7 @@ export default function Home({ posts }) {
           <h1 className="text-4xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
             {/* <span className="wave">👋🏻</span>, <span>I'm </span> */}
             <span className="wave">Hey</span>, <span>I'm </span>
-            <span className="text-lime-500 dark:text-lime-400">Fadjar</span>
+            <span className="text-lime-500 dark:text-lime-400">Fadjar Rafi</span>
           </h1>
           <p>
             I'm a Web Developer from Indonesia. This is my personal site, where I share what I have
