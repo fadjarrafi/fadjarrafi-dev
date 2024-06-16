@@ -7,7 +7,9 @@ summary: This is part of my final project for bachelor degree.
 canonicalUrl: https://fadjarrafi-dev.vercel.app/blog/cors-what-it-is
 ---
 
-![CORS Error](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy-uwkleNhHhJEJm0Y6VLVxaj1YN4mRN3teA&s)
+<div className="flex justify-center">
+  <img src="/static/cors/cors-error.png" alt="CORS Error" width="700" />
+</div>
 
 Have you ever encountered this problem while designing a web application? Yes, this is a nightmare for some devs, including myself when I first learned. I discovered this problem when learning how to develop an API for a blog. To understand how this error could happen, we need to know what CORS and how it works.
 
@@ -17,7 +19,9 @@ By default, the browser can only make requests if the resource is from the same 
 
 Imagine you have a web application with the domain 'https://www.domain-a.com' that requires data from an API located at 'https://api.domain-b.com'. Cross-origin requests are those that come from different origins.
 
-![cross-origin-request](https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZMpvF7hHqnHE44r_f6uyOxFM41HDfYhOE1Xt38grSdbZEZGzS3_DI_Hbh_tUzfqndIaWDKT5iheIkQWVWL-v7M4LlG05sK43o=w1920-h929)
+<div className="flex justify-center">
+  <img src="/static/cors/cross-origin request.png" alt="Cross-origin request" width="700" />
+</div>
 
 However, what happens if our web application must communicate with sources that are not on our domain? Here's where CORS is put into practice.
 
@@ -32,7 +36,10 @@ There are several [CORS headers](https://fetch.spec.whatwg.org/#http-cors-protoc
 - `Access-Control-Allow-Headers`
 
 When we make a request such as `GET`, `POST` or `HEAD`, the request will be sent from the browser to the server without custom headers.
-![CORS request](https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZxBuDgGiCoBG5_5r7OtV9hNnInvo6ivC0_sVwae3jhwFVgyMP31TYOzsPV2iA4yteyt6U-xCTrCw3hB_d7afKtdiYVN3e2mw=w1920-h929)
+
+<div className="flex justify-center">
+  <img src="/static/cors/cors request.png" alt="CORS request" width="700" />
+</div>
 
 #### Request from Browser:
 
