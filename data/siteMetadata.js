@@ -6,7 +6,7 @@ const siteMetadata = {
   description: 'My latest thought pouring into writings',
   language: 'en-us',
   theme: 'dark', // system, dark or light
-  siteUrl: 'https://fadjarrafi-dev.vercel.app/',
+  siteUrl: 'https://fadjarrafi.com/',
   siteRepo: 'https://github.com/fadjarrafi/fadjarrafi-dev',
   siteLogo: '/static/images/my-logo.png',
   socialBanner: '/static/images/twitter-card.png',
