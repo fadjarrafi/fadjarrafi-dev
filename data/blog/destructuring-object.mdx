@@ -1,0 +1,110 @@
+---
+title: Destructuring Object in JS
+date: '2024-09-29'
+tags: ['javascript']
+draft: false
+summary: In this part we continue to learn how to destructuring object after we learning how to destructuring an array.
+canonicalUrl: https://fadjarrafi.com/blog/destructuring-array
+---
+
+Let's continue from where we left off. After learning how to destructure arrays, we can also destructure objects. Imagine we have an apple object that contains various details about an apple:
+
+```js
+const apple = {
+  name: 'Apple',
+  color: 'Red',
+  weight: 150,
+  taste: 'Sweet',
+  nutrients: {
+    vitamin_c: 4.6,
+    fiber: 2.4,
+  },
+}
+```
+
+To extract data from each property, normally, we would assign each property to a variable one by one:
+
+```js
+const name = apple.name
+const color = apple.color
+const weight = apple.weight
+
+console.log(name) // Apple
+console.log(color) // Red
+console.log(weight) // 150
+```
+
+If we do it like this, it will take time and is not efficient. You have to keep writing `apple` for every property you want to access.
+
+With destructuring, we can simplify this by extracting multiple properties in one line. We can extract what we need like this:
+
+```js
+const { name, color, weight } = apple
+
+console.log(name) // Output: "Apple"
+console.log(color) // Output: "Red"
+console.log(weight) // Output: 150
+```
+
+Here, `{ name, color, weight }` are the property names you want to extract from the apple object. The `=` sign tells JavaScript to get those properties from the apple object. Now, `name`, `color`, and `weight` are variables holding the values from the object.
+
+### Re-naming Variables
+
+Sometimes, you might want to use different variable names than the property names. You can do this by renaming the variables during destructuring:
+
+```js
+const { name: fruitName, color: fruitColor } = apple
+
+console.log(fruitName) // Output: "Apple"
+console.log(fruitColor) // Output: "Red"
+```
+
+In this example, `name` is assigned to `fruitName`, and `color` is assigned to `fruitColor`.
+
+### Setting Default Values
+
+The object might not have a certain property. You can set a default value in that case:
+
+```js
+const { name, size = 'Medium' } = fruit
+
+console.log(name) // Apple
+console.log(size) // Medium (since fruit does not have a 'size' property)
+```
+
+Here, `size` defaults to `"Medium"` because the apple object does not have a `size` property.
+
+### Nested Destructuring
+
+If an object contains other objects (nested objects), you can also destructure them. For example, if you want to extract the `vitamin_c` and `fiber` from the `nutrients` object inside `apple`, you can do this:
+
+```js
+const {
+  name,
+  nutrients: { vitamin_c, fiber },
+} = detailedFruit
+
+console.log(name) // Apple
+console.log(vitamin_c) // 4.6
+console.log(fiber) // 2.4
+```
+
+In this example, we're extracting `vitamin_c` and `fiber` from the nested nutrients object inside apple.
+
+### Destructuring in Function Parameters
+
+You can also use destructuring directly in function parameters. For example:
+
+```js
+function describeFruit({ name, color, taste }) {
+  console.log(`The ${name} is ${color} and tastes ${taste}.`)
+}
+
+describeFruit(apple) // Output: "The Apple is Red and tastes Sweet."
+```
+
+In this case, the function `describeFruit` directly extracts the `name`, `color`, and `taste` properties from the passed apple object.
+
+## Conclusion
+
+Think of destructuring as grabbing only the pieces of fruit detail you want from a basket, without needing to refer to the entire basket repeatedly! Destructuring makes your code cleaner and more readable, especially when working with complex objects or arrays. It’s particularly useful when you’re only interested in certain properties from a larger data structure.
