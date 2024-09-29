@@ -1,0 +1,136 @@
+---
+title: Destructuring Array in JS
+date: '2024-09-29'
+tags: ['javascript']
+draft: true
+summary: Destructuring assignment in JavaScript is a convenient way to extract values from objects or arrays and assign them to variables in a more concise syntax.
+canonicalUrl: https://fadjarrafi.com/blog/destructuring-array
+---
+
+Destructuring assignment in JavaScript is a convenient way to extract values from objects or arrays and assign them to variables in a more concise syntax. It allows you to "unpack" values from these data structures into distinct variables.
+
+Imagine you have a fruit basket filled with different fruits. Destructuring in programming is like unpacking that fruit basket and placing each fruit on your kitchen counter, giving each one its own spot.
+
+Destructuring is a way to quickly and neatly unpack items from a container (like an array or object) into individual variables, just like taking fruits out of a basket and placing each one in its own spot on the counter.
+
+# Destructuring Array
+
+Let's say we have a basket with some fruits in it
+
+```js
+const basket = ['apple', 'banana', 'grape', 'orange']
+```
+
+and we need to unpack the fruits inside it.
+
+```js
+const [firstFruit, secondFruit, thirdFruit, fourthFruit] = basket
+
+console.log(firstFruit) // Output: "apple"
+console.log(secondFruit) // Output: "banana"
+console.log(thirdFruit) // Output: "grape"
+console.log(fourthFruit) // Output: "orange"
+```
+
+To unpack the fruit inside the basket, We create new variables (firstFruit, secondFruit, etc.) and assign them values from the basket array. The square brackets [] on the left side of the = tell JavaScript that we're destructuring an array. Each variable gets assigned the value from the corresponding position in the array.
+
+### Skipping Items in an Array
+
+We can also skip elements we don't need:
+
+```js
+const [first, , third] = basket
+console.log(first) // Output: "apple"
+console.log(third) // Output: "grape"
+```
+
+Here, we skipped the second fruit by leaving an empty space between commas.
+
+### Assigning the rest of an array
+
+We can also separate apple and banana into different basket and combine the rest of fruit into one basket
+
+```js
+const basket = ['apple', 'banana', 'grape', 'orange']
+
+const [firstFruit, secondFruit, ...remainingFruits] = basket
+
+console.log(firstFruit) // Output: "apple"
+console.log(secondFruit) // Output: "banana"
+console.log(remainingFruits) // Output: ["grape", "orange"]
+```
+
+We assign the first two fruits to firstFruit and secondFruit as before. The `...remainingFruits` syntax (three dots followed by a variable name) is called the "rest" operator. It collects all the remaining items in the array into a new array called remainingFruits.
+
+### Destructuring Assignment with Functions
+
+We can desctructuing fruit inside the function.
+
+```js
+function analyzeFruitBasket([firstFruit, secondFruit, ...otherFruits]) {
+  console.log(`The first fruit in the basket is ${firstFruit}`)
+  console.log(`The second fruit in the basket is ${secondFruit}`)
+  console.log(
+    `The basket also contains ${otherFruits.length} other fruits: ${otherFruits.join(', ')}`
+  )
+}
+
+const basket = ['apple', 'banana', 'grape', 'orange', 'mango']
+
+analyzeFruitBasket(basket)
+```
+
+The Output:
+
+```
+The first fruit in the basket is apple
+The second fruit in the basket is banana
+The basket also contains 3 other fruits: grape, orange, mango
+```
+
+The function `analyzeFruitBasket` uses array destructuring in its parameter list. When we call the function and pass the basket array, it automatically unpacks the array. `firstFruit` gets the first element, `secondFruit` gets the second, and otherFruits collects the rest.
+
+### Swapping Values using the Destructuring Assignment
+
+You can also swapping fruit one by one between different basket. For example we want to exchange the first fruit in basket1 with the first fruit in basket2.
+
+```js
+let basket1 = ['apple', 'banana', 'cherry']
+let basket2 = ['durian', 'cherry', 'starfruit']
+
+[basket1[0], basket2[0]] = [basket2[0], basket1[0]];
+
+console.log('\nAfter swapping the first fruit:')
+console.log('Basket 1:', basket1)
+console.log('Basket 2:', basket2)
+```
+
+the Output:
+
+```
+After swapping the first fruit:
+Basket 1: [ 'durian', 'banana', 'cherry' ]
+Basket 2: [ 'apple', 'elderberry', 'fig' ]
+```
+
+`[basket1[0], basket2[0]] = [basket2[0], basket1[0]];` This line simultaneously assigns the first fruit of basket2 to the first position of basket1, and vice versa. It's like quickly exchanging the top fruits of each basket. Or you want to swaping entire basket:
+
+```js
+;[basket1, basket2] = [basket2, basket1]
+
+console.log('\nAfter swapping entire baskets:')
+console.log('Basket 1:', basket1)
+console.log('Basket 2:', basket2)
+```
+
+the Output:
+
+```
+After swapping the first fruit:
+Basket 1: [ 'durian', 'banana', 'cherry' ]
+Basket 2: [ 'apple', 'elderberry', 'fig' ]
+```
+
+`[basket1, basket2] = [basket2, basket1];` This line swaps all the contents of basket1 and basket2. It's like exchanging the entire baskets in one swift motion. Next we will learn how we can destruct the objects we have. So stay tuned!!
+
+**Thanks for Reading✌️**
