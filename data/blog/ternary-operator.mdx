@@ -1,0 +1,80 @@
+---
+title: Ternary Operator in JS
+date: '2024-09-28'
+tags: ['javascript']
+draft: false
+summary: The ternary operators are commonly used as an alternative to the if...else expression.
+canonicalUrl: https://fadjarrafi.com/blog/ternary-operator
+---
+
+# Ternary Operator
+
+Assume we need to develop logic with two conditions. For example, we need to be sure the fruit we have is an apple. Let us build a condition using if..else.
+
+```js
+let basket = 'apple'
+if (basket == 'apple') {
+  result = 'This basket has apples'
+} else {
+  result = 'This basket has no apples'
+}
+```
+
+and compare with this
+
+```js
+let basket = 'apple'
+let result = basket == 'apple' ? 'This basket has apples' : 'This basket has no apples'
+```
+
+Shorter, right? yup, this is what is called a ternary operator.
+
+## So what is The Ternary Operator?
+
+The ternary operator is a conditional operator that accepts three operands: a condition followed by a question mark (?), an expression to execute if the condition is true, followed by a colon (:), and an expression to execute if the condition is false.
+
+As in the example below, we have a basket variable that contains apples. Then we specify a condition for checking whether the variable includes apples. If the condition is true, it will display the message that the basket contains apples, and vice versa; otherwise, it will display the message that the basket does not include apples.
+
+<div className="flex justify-center">
+  <img src="/static/ternary/ternary_operator.png" alt="Ternary Operator" width="700" />
+</div>
+
+So the ternary operator is a shorthand for the if-else expression. Ternary operators are commonly used as an alternative to the if...else expression.
+
+## Nested Ternary Operator
+
+What if we want to check the basket for fruit other than apples? For example, we want to confirm that our basket has bananas in addition to apples. With the ternary operator, we can make it look like this.
+
+```js
+let basket = 'apple'
+let result =
+  basket == 'apple'
+    ? 'This basket has apples'
+    : basket == 'banana'
+      ? 'This basket has bananas'
+      : 'This basket has no apples or bananas'
+```
+
+In the first condition, we will check the basket variable has apples or not? If the condition is true then the message 'This basket has apples' appears. Then the basket variable will be checked whether it has bananas or not? If the condition is true then the message 'This basket has bananas' appears. What happens if the 2 conditions are not met? then the message 'This basket has no apples or bananas' will appear
+
+<div className="flex justify-center">
+  <img src="/static/ternary/nested_ternary.png" alt="Nested Ternary Operator" width="700" />
+</div>
+
+What if we need to create more than 2 condition? let's cretate it using nested ternary operator.
+
+```js
+let basket = 'apple'
+let result =
+  basket == 'apple'
+    ? 'This basket has apples'
+    : basket == 'banana'
+      ? 'This basket has bananas'
+      : basket == 'grape'
+        ? 'This basket has grapes'
+        : 'This basket has no apples, bananas, or grapes'
+```
+
+Well. it's look so confusing and make the condition inside our code is harder to read. **However, the use of nested ternary is quite uncommon because it makes the code more difficult to read**. The nested ternary operator is typically used to examine two condition. Consider if we need to examine other conditions. If you need to check two or more conditions, you can use if...else or switch to make the code more readable.
+
+**Thanks for Reading✌️**
