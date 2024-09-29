@@ -2,7 +2,7 @@
 title: Destructuring Array in JS
 date: '2024-09-29'
 tags: ['javascript']
-draft: true
+draft: false
 summary: Destructuring assignment in JavaScript is a convenient way to extract values from objects or arrays and assign them to variables in a more concise syntax.
 canonicalUrl: https://fadjarrafi.com/blog/destructuring-array
 ---
@@ -96,9 +96,10 @@ You can also swapping fruit one by one between different basket. For example we 
 
 ```js
 let basket1 = ['apple', 'banana', 'cherry']
-let basket2 = ['durian', 'cherry', 'starfruit']
-
-[basket1[0], basket2[0]] = [basket2[0], basket1[0]];
+let basket2 = (['durian', 'cherry', 'starfruit'][(basket1[0], basket2[0])] = [
+  basket2[0],
+  basket1[0],
+])
 
 console.log('\nAfter swapping the first fruit:')
 console.log('Basket 1:', basket1)
