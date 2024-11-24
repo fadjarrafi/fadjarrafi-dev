@@ -89,11 +89,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
       <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      <script
+      {/* <script
         async
         src="https://us.umami.is/script.js"
         data-website-id={process.env.NEXT_UMAMI_ID}
-      ></script>
+      ></script> */}
       <body className="bg-lime-50 text-black antialiased dark:bg-[#16232C] dark:text-white">
         <Suspense fallback={<Loading />}>
           <ThemeProviders>
