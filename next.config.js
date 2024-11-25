@@ -12,9 +12,9 @@ const ContentSecurityPolicy = `
   style-src 'self' 'unsafe-inline';
   img-src * blob: data:;
   media-src *.s3.amazonaws.com;
-  connect-src *;
+  connect-src * https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com;
   font-src 'self';
-  frame-src giscus.app
+  frame-src giscus.app https://www.googletagmanager.com;
 `
 
 const securityHeaders = [

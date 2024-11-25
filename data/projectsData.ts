@@ -3,7 +3,7 @@ const projectsData = [
     title: 'Square Indonesia',
     description: `Square Indonesia is a digital marketing agency on a mission to empower businesses with impactful solutions that drive tangible results. We believe in the power of integrity, goal-oriented strategies, and customer satisfaction to fuel success in the ever-evolving digital landscape.`,
     imgSrc: '/static/images/square-indonesia.png',
-    href: 'https://square-indonesia.vercel.app/',
+    href: 'https://squareindonesia.com/',
     techImg: {
       html: '/static/images/html.svg',
       css: '/static/images/css.svg',
