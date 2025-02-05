@@ -13,6 +13,7 @@ import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
 import { Suspense } from 'react'
 import Loading from './loading'
+import InitialLoadingProvider from './initial-loading-providers'
 
 const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -111,20 +112,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
       </head>
       <body className="bg-lime-50 text-black antialiased dark:bg-[#16232C] dark:text-white">
-        {/* <Suspense fallback={<Loading />}> */}
         <ThemeProviders>
-          <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
-          <SectionContainer>
-            <div className="flex h-screen flex-col justify-between font-sans">
-              <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
-                <Header />
-                <main className="mb-auto">{children}</main>
-              </SearchProvider>
-              <Footer />
-            </div>
-          </SectionContainer>
+          <InitialLoadingProvider>
+            <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
+            <SectionContainer>
+              <div className="flex h-screen flex-col justify-between font-sans">
+                <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
+                  <Suspense fallback={<Loading />}>
+                    <Header />
+                    <main className="mb-auto">{children}</main>
+                  </Suspense>
+                </SearchProvider>
+                <Footer />
+              </div>
+            </SectionContainer>
+          </InitialLoadingProvider>
         </ThemeProviders>
-        {/* </Suspense> */}
       </body>
     </html>
   )
