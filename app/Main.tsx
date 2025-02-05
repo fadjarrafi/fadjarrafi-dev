@@ -10,27 +10,29 @@ export default function Home({ posts }) {
     <>
       <div className="mt-7 flex items-center justify-between space-y-4">
         <div className="space-y-5 md:space-y-8">
-          <h1 className="text-4xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            {/* <span className="wave">👋🏻</span>, <span>I'm </span> */}
+          <h1 className="animate-slide-up-head text-4xl font-extrabold leading-9 tracking-tight text-gray-900 [animation-delay:200ms] dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
             <span className="wave">Hey</span>, <span>I'm </span>
-            <span className="text-lime-500 dark:text-lime-400">Fadjar Rafi</span>
+            <span className="text-lime-500 dark:text-lime-400">
+              Fadjar<span className="wave">👋🏻</span>
+            </span>
           </h1>
-          <p>
-            I'm a Web Developer from Indonesia. This is my personal site, where I share what I have
-            learned through writing.
+          <p className="animate-slide-up-head max-w-3xl text-xl [animation-delay:400ms]">
+            Full-stack web developer crafting digital solutions based in Indonesia. I document my
+            coding journey and share web development insights through practical tutorials and
+            articles.
           </p>
           <Link
             href="/about"
-            className="mt-6 inline-block rounded bg-gradient-to-r from-green-400 to-blue-500 px-4 py-2 font-bold text-white hover:from-pink-500 hover:to-yellow-500"
+            className="animate-slide-up-head mt-6 inline-block rounded bg-gradient-to-r from-green-400 to-blue-500 px-4 py-2 font-bold text-white [animation-delay:600ms] hover:from-pink-500 hover:to-yellow-500"
           >
             About Me
           </Link>
         </div>
       </div>
-      <div className="mt-20 divide-y divide-gray-200 dark:divide-gray-700">
+      <div className="animate-slide-up-recent-post mt-20 divide-y divide-gray-200 dark:divide-gray-700">
         <div className="space-y-2 pb-8 pt-6 md:space-y-5">
-          <h2 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            Latest Post
+          <h2 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
+            Recent Writing
           </h2>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
             {siteMetadata.description}
