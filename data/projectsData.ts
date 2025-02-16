@@ -20,15 +20,15 @@ const projectsData = [
       ExpressJS: '/static/images/express-js.svg',
     },
   },
-  {
-    title: 'Hospitality CMS',
-    description: `Content Management for Hospitality TV Apps`,
-    // imgSrc: '/static/images/billing-dashboard.png',
-    slug: 'hospitality-cms', // Changed from href
-    techImg: {
-      Laravel: '/static/images/laravel.svg',
-    },
-  },
+  // {
+  //   title: 'Hospitality CMS',
+  //   description: `Content Management for Hospitality TV Apps`,
+  //   // imgSrc: '/static/images/billing-dashboard.png',
+  //   slug: 'hospitality-cms', // Changed from href
+  //   techImg: {
+  //     Laravel: '/static/images/laravel.svg',
+  //   },
+  // },
   // {
   //   title: 'Square Indonesia',
   //   description: `Square Indonesia is a digital marketing agency on a mission to empower businesses with impactful solutions that drive tangible results. We believe in the power of integrity, goal-oriented strategies, and customer satisfaction to fuel success in the ever-evolving digital landscape.`,
