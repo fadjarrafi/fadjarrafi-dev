@@ -1,0 +1,105 @@
+---
+title: 'Billing Internet Cafe'
+date: '2024-02-07'
+tags: ['web-development', 'digital-marketing']
+draft: false
+summary: 'Internet Cafe Management System: A Full-Stack Solution'
+thumbnail: '/static/images/billing-dashboard.png'
+techStack:
+  - name: NextJS
+    icon: /static/images/next-js.svg
+  - name: EspressJS
+    icon: /static/images/express-js.svg
+---
+
+## About the Client
+
+The client owns multiple internet cafes across different locations and needed a centralized system to monitor and manage their operations. They were facing challenges with:
+
+- Managing multiple branches independently
+- Tracking PC usage and revenue across locations
+- Maintaining consistent service quality
+- Processing transactions and generating reports
+- Real-time monitoring of PC status and usage
+
+<div className="flex justify-center">
+  <img src="/static/images/billing-arsitektur.png" alt="Billing Arsitechture" width="600" />
+</div>
+
+## Project Background
+
+The Internet Cafe Management System is a comprehensive full-stack solution designed to centralize and streamline the operations of multiple internet cafe branches.
+
+<div className="flex justify-center">
+  <img src="/static/images/billing-dashboard.png" alt="Billing Dashboard" width="700" />
+</div>
+
+<div className="flex justify-center">
+  <img src="/static/images/billing-arsitektur1.png" alt="Billing Arsitechture 1" width="700" />
+</div>
+
+The system consists of three main components:
+
+1. **Admin Dashboard (Next.js)**
+
+   - Modern, responsive interface built with Next.js and Shadcn UI
+   - Real-time monitoring capabilities
+   - Role-based access control
+   - Comprehensive reporting and analytics
+
+2. **Backend API (Express.js)**
+
+   - RESTful API architecture
+   - PostgreSQL database with TypeORM
+   - JWT-based authentication
+   - Role-based authorization
+   - Transaction management
+
+3. **Real-time Communication (Socket.IO)**
+   - Bi-directional communication between PCs and dashboard
+   - Real-time status updates
+   - Instant transaction processing
+   - Live monitoring capabilities
+
+### Key Features
+
+1. **Device Management**
+2. **Branch Management**
+3. **Transaction Management**
+4. **Bookkeeping Report**
+5. **Role-based Authentication**
+
+## Technical Challenges and Solutions
+
+### 1. Race Condition Prevention
+
+One of the most critical challenges was preventing race conditions during transaction processing.
+
+### 2. N+1 Query Optimization
+
+To prevent N+1 query issues, we implemented:
+
+- Eager loading of related entities
+- Custom query builders
+- Optimized JOIN operations
+
+### 3. Real-time Communication
+
+Implementing real-time features required careful consideration of:
+
+- Connection management
+- Event handling
+- Error recovery
+- State synchronization
+
+### 4. Security Implementation
+
+Security was a top priority, implemented through:
+
+- JWT-based authentication
+- Role-based access control
+- Request validation
+- SQL injection prevention
+- XSS protection
+
+This project demonstrates the successful implementation of a complex, distributed system with multiple moving parts, while maintaining high standards of code quality, security, and user experience.

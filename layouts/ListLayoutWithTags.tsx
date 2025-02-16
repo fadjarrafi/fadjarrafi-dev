@@ -77,7 +77,7 @@ export default function ListLayoutWithTags({
   return (
     <>
       <div>
-        <div className="flex sm:space-x-24">
+        <div className="animate-slide-up-head flex sm:space-x-24">
           <div className="hidden h-full max-h-screen min-w-[280px] max-w-[280px] flex-wrap overflow-auto rounded bg-lime-50 pt-5 shadow-md dark:bg-lime-100 dark:shadow-lime-800/40 sm:flex">
             <div className="px-6 py-4">
               {pathname.startsWith('/blog') ? (

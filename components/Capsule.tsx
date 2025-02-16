@@ -3,7 +3,7 @@ import Image from 'next/image'
 export default function Capsule() {
   return (
     <div className="mr-3 flex flex-row flex-wrap gap-2 pt-3">
-      <div className="capsule border border-gray-700">
+      {/* <div className="capsule border border-gray-700">
         <Image
           src="/static/images/html.svg"
           alt="html"
@@ -22,7 +22,7 @@ export default function Capsule() {
           style={{ margin: '0' }}
         />
         <h4 style={{ margin: 'auto' }}>CSS</h4>
-      </div>
+      </div> */}
 
       <div className="capsule border border-gray-700">
         <Image
@@ -46,7 +46,7 @@ export default function Capsule() {
         <h4 style={{ margin: 'auto' }}>Javascript</h4>
       </div>
 
-      <div className="capsule border border-gray-700">
+      {/* <div className="capsule border border-gray-700">
         <Image
           src="/static/images/golang.svg"
           alt="golang"
@@ -55,7 +55,7 @@ export default function Capsule() {
           style={{ margin: '0' }}
         />
         <h4 style={{ margin: 'auto' }}>GO</h4>
-      </div>
+      </div> */}
 
       <div className="capsule border border-gray-700">
         <Image
@@ -103,17 +103,6 @@ export default function Capsule() {
 
       <div className="capsule border border-gray-700">
         <Image
-          src="/static/images/gin-gonic.png"
-          alt="gin-gonic"
-          width={30}
-          height={30}
-          style={{ margin: '0' }}
-        />
-        <h4 style={{ margin: 'auto' }}>Gin</h4>
-      </div>
-
-      <div className="capsule border border-gray-700">
-        <Image
           src="/static/images/nodejs.svg"
           alt="nodejs"
           width={30}
@@ -121,6 +110,17 @@ export default function Capsule() {
           style={{ margin: '0' }}
         />
         <h4 style={{ margin: 'auto' }}>Node JS</h4>
+      </div>
+
+      <div className="capsule border border-gray-700">
+        <Image
+          src="/static/images/next-js.svg"
+          alt="nextjs"
+          width={30}
+          height={30}
+          style={{ margin: '0' }}
+        />
+        <h4 style={{ margin: 'auto' }}>NextJS</h4>
       </div>
 
       <div className="capsule border border-gray-700">

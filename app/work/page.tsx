@@ -5,11 +5,37 @@ export const metadata = genPageMetadata({ title: 'Works' })
 export default function Works() {
   return (
     <>
-      <div className="divide-y divide-gray-200 dark:divide-gray-700">
+      <div className="animate-slide-up-head divide-y divide-gray-200 dark:divide-gray-700">
         <div className="space-y-2 pb-8 pt-6 md:space-y-5">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            Highlights from Work Experience.
+            Work Experience
           </h1>
+        </div>
+
+        <div className="space-y-2 pb-8 pt-6 md:space-y-5">
+          <h1 className="text-xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-2xl sm:leading-10 md:text-4xl md:leading-14">
+            Life Media (PT. SaranaInsan MudaSelaras)
+          </h1>
+          <h1 className="text-base font-thin italic leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-base sm:leading-10 md:text-base md:leading-14">
+            Full Stack Developer (Jan 2024 - Present)
+          </h1>
+          <p>
+            During my time in hospitality technology, I spearheaded the development of a
+            comprehensive Android application that revolutionized the guest experience. Built using
+            Java, this application served as a central hub for hotel services, room controls, and
+            IPTV streaming capabilities. To complement this guest-facing solution, I designed and
+            implemented a robust Content Management System (CMS) using PHP and Laravel, which
+            empowered hotel staff and administrators to manage IPTV content, schedules, and user
+            settings in real-time.
+          </p>
+          <p>
+            A key achievement was the seamless integration of APIs that facilitated fluid
+            communication between the Android application, the CMS, and the company's backend
+            infrastructure, ensuring instantaneous updates and data synchronization. Beyond
+            development, I took charge of maintaining and optimizing internal systems, with a
+            particular focus on network monitoring tools, which was crucial in delivering reliable
+            service across both internal operations and customer-facing products.
+          </p>
         </div>
 
         <div className="space-y-2 pb-8 pt-6 md:space-y-5">
