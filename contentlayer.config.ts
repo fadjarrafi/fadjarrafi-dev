@@ -90,7 +90,16 @@ export const Blog = defineDocumentType(() => ({
     authors: { type: 'list', of: { type: 'string' } },
     layout: { type: 'string' },
     bibliography: { type: 'string' },
-    canonicalUrl: { type: 'string' },
+    canonicalUrl: {
+      type: 'string',
+      resolve: (doc) => {
+        const pathSegments = doc._raw.flattenedPath.split('/')
+        const language = pathSegments[1] // 'en' or 'id'
+        const postPath = pathSegments.slice(2).join('/')
+        return `${siteMetadata.siteUrl}/blog/${language}/${postPath}`
+      },
+    },
+    language: { type: 'string', required: true },
   },
   computedFields: {
     ...computedFields,
@@ -106,6 +115,24 @@ export const Blog = defineDocumentType(() => ({
         image: doc.images ? doc.images[0] : siteMetadata.socialBanner,
         url: `${siteMetadata.siteUrl}/${doc._raw.flattenedPath}`,
       }),
+    },
+    path: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath,
+    },
+    language: {
+      type: 'string',
+      resolve: (doc) => {
+        const pathSegments = doc._raw.flattenedPath.split('/')
+        return pathSegments[1] // This will get 'en' or 'id'
+      },
+    },
+    slug: {
+      type: 'string',
+      resolve: (doc) => {
+        const pathSegments = doc._raw.flattenedPath.split('/')
+        return pathSegments.slice(1).join('/')
+      },
     },
   },
 }))

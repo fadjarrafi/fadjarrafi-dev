@@ -36,9 +36,15 @@ export const metadata: Metadata = {
     images: [siteMetadata.socialBanner],
     locale: 'en_US',
     type: 'website',
+    alternateLocale: ['id_ID'], // Add Indonesian locale
   },
   alternates: {
     canonical: './',
+    languages: {
+      en: `${siteMetadata.siteUrl}/en`,
+      id: `${siteMetadata.siteUrl}/id`,
+      'x-default': `${siteMetadata.siteUrl}/en`,
+    },
     types: {
       'application/rss+xml': `${siteMetadata.siteUrl}/feed.xml`,
     },
@@ -96,6 +102,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+
+        {/* Alternate language links */}
+        <link rel="alternate" href={`${siteMetadata.siteUrl}/en`} hrefLang="en" />
+        <link rel="alternate" href={`${siteMetadata.siteUrl}/id`} hrefLang="id" />
+        <link rel="alternate" href={`${siteMetadata.siteUrl}/en`} hrefLang="x-default" />
 
         {/* Google Analytics */}
         <Script
