@@ -1,18 +1,18 @@
 ---
-title: A Complete Guide to JavaScript Object Destructuring
+title: Quick Guide to Object Destructuring in JavaScript
 date: '2024-09-29'
 language: 'en'
-tags: ['javascript', 'es6', 'web development', 'programming']
-draft: false
-summary: Master JavaScript object destructuring with practical examples. Learn how to efficiently extract object properties, handle nested objects, and use advanced destructuring patterns.
+tags: ['javascript', 'es6']
+draft: true
+summary: Object destructuring in JavaScript makes it easy for us to break down objects and assign their properties to individual variables.
 canonicalUrl: https://fadjarrafi.com/blog/destructuring-object
 ---
 
-Object destructuring is a powerful JavaScript feature that lets you extract object properties efficiently. Instead of accessing properties one by one, destructuring provides a cleaner syntax to work with objects.
+Object destructuring is a powerful feature for efficiently extracting properties from objects. Instead of accessing them one by one, destructuring makes our syntax cleaner and more readable.
 
-## Basic Object Destructuring
+As the term suggests, object destructuring is the process of breaking down properties from an object and putting them into separate variables.
 
-Let's start with a simple example:
+Let's say we have an apple variable with `name`, `color`, `weight`, and `taste` properties as follows:
 
 ```js
 const apple = {
@@ -21,41 +21,69 @@ const apple = {
   weight: 150,
   taste: 'Sweet',
 }
+```
 
-// Without destructuring
-const name = apple.name
-const color = apple.color
+Without destructuring, we need to declare each property of apple one by one to access the value of each property.
 
-// With destructuring
+```js
+let name = apple.name // output: Apple
+
+let color = apple.color // output: Red
+
+let weight = apple.weight // output: 150
+
+let taste = apple.taste // output: Sweet
+```
+
+This would be very tedious if we're dealing with many objects or even nested objects, such as when working with JSON responses from an API.
+
+## Basics of Object Destructuring
+
+So how do we perform destructuring on the apple object we created earlier? We can do it with just one line of code.
+
+```js
 const { name, color, weight } = apple
+
 console.log(name) // "Apple"
 console.log(color) // "Red"
 ```
 
+This way, `name`, `color`, and `weight` have the same values as the corresponding properties in the apple object.
+
 ## Advanced Destructuring Techniques
+
+Destructuring can also be used in specific cases such as:
 
 ### 1. Renaming Variables
 
-Extract properties with custom variable names:
+We can extract properties with variable names of our choice:
 
 ```js
 const { name: fruitName, color: fruitColor } = apple
+
 console.log(fruitName) // "Apple"
 console.log(fruitColor) // "Red"
 ```
 
 ### 2. Default Values
 
-Set fallback values for missing properties:
+Let's say we want to access the size property in the apple variable:
+
+```js
+console.log(size) // undefined
+```
+
+Since there is no size property in the apple variable, the value will appear as `undefined`. We can add a default value to the size variable.
 
 ```js
 const { size = 'Medium' } = apple
+
 console.log(size) // "Medium"
 ```
 
 ### 3. Nested Object Destructuring
 
-Extract values from nested objects:
+We can also extract values from nested objects. This will be very useful when dealing with JSON responses from an API.
 
 ```js
 const fruit = {
@@ -69,13 +97,14 @@ const fruit = {
 const {
   nutrients: { vitamin_c, fiber },
 } = fruit
+
 console.log(vitamin_c) // 4.6
 console.log(fiber) // 2.4
 ```
 
 ### 4. Function Parameter Destructuring
 
-Use destructuring in function parameters for cleaner code:
+We can use destructuring in functions as parameters.
 
 ```js
 function describeFruit({ name, color, taste }) {
@@ -85,17 +114,8 @@ function describeFruit({ name, color, taste }) {
 describeFruit(apple) // "The Apple is Red and tastes Sweet."
 ```
 
-## Best Practices
-
-1. Only destructure the properties you need
-2. Use default values for optional properties
-3. Keep destructuring patterns simple and readable
-4. Consider using parameter destructuring for functions with multiple options
-
 ## Conclusion
 
-Object destructuring simplifies property access and makes JavaScript code more maintainable. It's especially useful when working with APIs, configuration objects, or any complex data structures.
-
-Start using destructuring in your projects to write cleaner, more efficient code.
+Object Destructuring makes it easier for us to access properties and makes our JavaScript code more maintainable. This is especially useful when processing JSON data in APIs or complex data structures.
 
 **Happy Coding! ✌️**
