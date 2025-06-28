@@ -20,6 +20,16 @@ const projectsData = [
       ExpressJS: '/static/images/express-js.svg',
     },
   },
+  {
+    title: 'Movie Apps',
+    description: `A React-based movie discovery uilt with React 19, Vite, and TailwindCSS, the app integrates TMDB API for movie data and uses Appwrite as the backend database.`,
+    imgSrc: '/static/images/movie-app.png',
+    slug: 'movie-app', // Changed from href
+    techImg: {
+      React: '/static/images/react.svg',
+      Appwrite: '/static/images/appwrite.svg',
+    },
+  },
   // {
   //   title: 'Hospitality CMS',
   //   description: `Content Management for Hospitality TV Apps`,

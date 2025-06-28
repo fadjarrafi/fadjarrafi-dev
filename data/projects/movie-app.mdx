@@ -1,0 +1,155 @@
+---
+title: 'Movie App'
+date: '2025-06-27'
+tags: ['web-development']
+draft: false
+summary: 'A React-based movie discovery application that helps users find movies through intelligent search and trending algorithms. Built with React 19, Vite, and TailwindCSS, the app integrates TMDB API for movie data and uses Appwrite as the backend database.'
+thumbnail: '/static/images/movie-app.png'
+techStack:
+  - name: React
+    icon: /static/images/react.svg
+  - name: Appwrite
+    icon: /static/images/appwrite.svg
+---
+
+## About the Project
+
+I started this mini project while learning the basics of React. I created a simple movie discovery application using React 19 as the frontend and Appwrite as the backend.
+
+I also used Vite as the build tool for the frontend. For the movie data, I integrated the TMDB API, and for styling, I chose TailwindCSS with a custom theme using vanilla CSS.
+
+<div className="flex justify-center">
+  <img src="/static/images/movie-app-preview.png" alt="Billing Arsitechture" width="600" />
+</div>
+
+he application uses Client Side Rendering to display movie data. I built reusable components like MovieCard for displaying individual movies, Search for the input functionality, and Spinner for loading states.
+
+When the application loads for the first time, it triggers useEffect to fetch initial data from the /discover/movie?sort_by=popularity.desc endpoint and displays it through the MovieCard component.
+
+For the search functionality, I implemented a debouncing system using the useDebounce hook from react-use library. When a user enters a keyword to search for a movie, the application doesn't immediately make a request to the API.
+
+```js
+// The magic happens here - balancing responsiveness with efficiency
+useDebounce(() => setDebouncedSearchTerm(searchTerm), 500, [searchTerm]);
+```
+
+After 500 milliseconds, the application triggers `useEffect debounce Search Term` which will then synchronize data from the `/search/movie?query=${encodeURIComponent(query)}` endpoint.
+
+```mermaid
+flowchart TD
+    A[App Component Mounts] --> B[useEffect Triggers]
+    B --> C{Search Term?}
+
+    C -->|Empty/Initial| D[fetchMovies with no query]
+    C -->|Has Search Term| E[fetchMovies with query]
+
+    D --> F[API Call: /discover/movie?sort_by=popularity.desc]
+    E --> G[API Call: /search/movie?query=searchTerm]
+
+    F --> H[TMDB API Response]
+    G --> H
+
+    H --> I{Response OK?}
+    I -->|No| J[Set Error Message]
+    I -->|Yes| K[Extract data.results]
+
+    K --> L[setMovieList with results]
+    L --> M{Search Query & Results > 0?}
+
+    M -->|Yes| N[updateSearchCount in Appwrite]
+    M -->|No| O[Skip Appwrite Update]
+
+    N --> P[Check if search term exists in DB]
+    P --> Q{Term Exists?}
+    Q -->|Yes| R[Increment count]
+    Q -->|No| S[Create new document]
+
+    R --> T[Update Appwrite Document]
+    S --> U[Create Appwrite Document]
+
+    T --> V[Trigger getTrendingMovies]
+    U --> V
+    O --> V
+
+    V --> W[Query Appwrite: Top 5 by count]
+    W --> X[setTrendingList]
+
+    L --> Y[Render MovieCard Components]
+    X --> Z[Render Trending Section]
+
+    Y --> AA[Display Movie Grid]
+    Z --> BB[Display Trending List]
+
+    J --> CC[Display Error Message]
+
+    %% User Interaction Flow
+    DD[User Types in Search] --> EE[useDebounce 500ms delay]
+    EE --> FF[setDebouncedSearchTerm]
+    FF --> GG[useEffect detects change]
+    GG --> C
+
+    %% Loading States
+    HH[setIsLoading true] --> F
+    HH --> G
+    H --> II[setIsLoading false]
+
+    %% Styling
+    classDef apiCall fill:#e1f5fe
+    classDef component fill:#f3e5f5
+    classDef database fill:#e8f5e8
+    classDef userAction fill:#fff3e0
+
+    class F,G,H apiCall
+    class Y,Z,AA,BB,CC component
+    class N,P,R,S,T,U,V,W,X database
+    class DD,EE userAction
+```
+
+Instead, the search system delays the request for 500 milliseconds. This prevents API spam and improves the user experience. After 500 milliseconds, the application triggers another useEffect for the debounced search term, which then fetches data from the `/search/movie?query=${encodeURIComponent(query)}` endpoint.
+
+```js
+export const updateSearchCount = async (searchTerm, movie) => {
+    // 1. Use Appwrite SDK to update if the search term is exist in the database
+    try {
+        const result = await database.listDocuments(DATABASE_ID, COLLECTION_ID, [
+            Query.equal('searchTerm', searchTerm)
+        ]);
+
+        // 2. If it does, update the count
+        if (result.documents.length > 0) {
+            const doc = result.documents[0];
+
+            await database.updateDocument(DATABASE_ID, COLLECTION_ID, doc.$id, {
+                count: doc.count + 1,
+            })
+        // 3. if it doesn't, create a new document with the search term and count as 1
+        } else {
+            await database.createDocument(DATABASE_ID, COLLECTION_ID, ID.unique(), {
+                searchTerm,
+                count: 1,
+                movie_id: movie.id,
+                poster_url: `https://image.tmdb.org/t/p/original/${movie.poster_path}`,
+            });
+        }
+    } catch(err) {
+        console.log(err);
+    }
+}
+```
+
+Throughout the development, I implemented proper error handling and loading states using useState hooks to manage different UI conditions. The application shows a spinner during API calls and displays error messages when requests fail, providing better user feedback.
+
+I also implemented a simple trending algorithm that tracks movie popularity based on search frequency. When a user searches for a movie, the application uses Appwrite SDK to check if the search term already exists in the database through query operations.
+
+If it doesn't exist, the application creates a new document with that search term. If it already exists, the application increases the count by 1. The trending section then displays the top 5 most searched movies using conditional rendering.
+
+For production deployment, I configured the application with environment variables for API keys, set up Nginx web server configuration, and implemented SSL certificates to make it ready for real-world use.
+
+---
+
+**Check Out Website**: https://movie.fadjarrafi.xyz/
+
+**Explore the Code**: https://github.com/fadjarrafi/movie-app
+
+**Built With**: React, Vite, Tailwind CSS, Appwrite, and TMDB API
+

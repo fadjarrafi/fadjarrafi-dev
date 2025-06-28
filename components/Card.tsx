@@ -9,13 +9,13 @@ const Card = ({ title, description, imgSrc, slug, techImg }) => (
       } overflow-hidden rounded-md border-2 border-gray-200 border-opacity-60 dark:border-gray-700`}
     >
       {imgSrc && (
-        <Link href={`/projects/${slug}`} aria-label={`Link to ${title}`}>
+        <Link href={`/projects/${slug}`} aria-label={`Link to ${title}`} className="block">
           <Image
             alt={title}
             src={imgSrc}
-            className="object-cover object-center md:h-36 lg:h-48"
-            width={544}
-            height={306}
+            className="w-full aspect-[1536/895] object-cover object-center"
+            width={1536}
+            height={895}
           />
         </Link>
       )}
