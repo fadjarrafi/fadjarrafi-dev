@@ -13,7 +13,7 @@ const Card = ({ title, description, imgSrc, slug, techImg }) => (
           <Image
             alt={title}
             src={imgSrc}
-            className="w-full aspect-[1536/895] object-cover object-center"
+            className="aspect-[1536/895] w-full object-cover object-center"
             width={1536}
             height={895}
           />
