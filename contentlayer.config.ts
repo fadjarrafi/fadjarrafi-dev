@@ -19,11 +19,16 @@ import rehypeKatex from 'rehype-katex'
 import rehypeCitation from 'rehype-citation'
 import rehypePrismPlus from 'rehype-prism-plus'
 import rehypePresetMinify from 'rehype-preset-minify'
+// ADD THIS: Import rehype-mermaid
+import rehypeMermaid from 'rehype-mermaid'
 import siteMetadata from './data/siteMetadata'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
 
 const root = process.cwd()
 const isProduction = process.env.NODE_ENV === 'production'
+
+// TypeScript workaround for rehype-mermaid compatibility
+const rehypeMermaidPlugin = rehypeMermaid as any
 
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
@@ -190,6 +195,15 @@ export default makeSource({
       rehypeAutolinkHeadings,
       rehypeKatex,
       [rehypeCitation, { path: path.join(root, 'data') }],
+      // ADD THIS: rehype-mermaid MUST come before rehypePrismPlus
+      [
+        rehypeMermaidPlugin,
+        {
+          background: 'white',
+          className: 'mermaid-diagram',
+          strategy: 'inline-svg',
+        },
+      ],
       [rehypePrismPlus, { defaultLanguage: 'js', ignoreMissing: true }],
       rehypePresetMinify,
     ],
