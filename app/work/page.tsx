@@ -43,7 +43,7 @@ export default function Works() {
             Square Indonesia
           </h1>
           <h1 className="text-base font-thin italic leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-base sm:leading-10 md:text-base md:leading-14">
-            Web Programmer (Jul 2023 - Nov 2023)
+            Full Stack Developer (Jan 2023 - Present)
           </h1>
           <p>
             My time at Square Indonesia was focused on enhancing user experience and website

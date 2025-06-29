@@ -32,7 +32,7 @@ export default function Home({ posts }) {
               About Me
             </Link>
             <Link
-              href="https://drive.google.com/file/d/1yiHUT3quYR54faxW5ZwQJ9y37j9rnuKp/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1AGOSIBdBeiW1QwRoNnIBkIf8jEl_ARCo/view?usp=sharing"
               className="animate-slide-up-head relative mt-6 inline-block rounded bg-transparent px-4 py-2 font-bold text-transparent transition-colors duration-300 hover:text-white"
               style={{
                 backgroundImage: 'linear-gradient(to right, rgb(74, 222, 128), rgb(59, 130, 246))',
