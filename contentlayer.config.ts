@@ -195,13 +195,22 @@ export default makeSource({
       rehypeAutolinkHeadings,
       rehypeKatex,
       [rehypeCitation, { path: path.join(root, 'data') }],
-      // ADD THIS: rehype-mermaid MUST come before rehypePrismPlus
+      // UPDATED: Configure rehype-mermaid to not use browser dependencies
       [
         rehypeMermaidPlugin,
         {
-          background: 'white',
-          className: 'mermaid-diagram',
           strategy: 'inline-svg',
+          dark: false,
+          launchOptions: {
+            executablePath: undefined, // Don't use Playwright
+          },
+          mermaidConfig: {
+            theme: 'default',
+            themeVariables: {
+              background: '#ffffff',
+              primaryColor: '#ff0000',
+            },
+          },
         },
       ],
       [rehypePrismPlus, { defaultLanguage: 'js', ignoreMissing: true }],
