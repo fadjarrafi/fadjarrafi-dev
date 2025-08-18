@@ -50,9 +50,11 @@ Operator ternary sangat umum digunakan dalam komponen React untuk rendering kond
 
 ```jsx
 // Rendering kondisional sederhana
-return <div>{isMasuk ? <DashboardPengguna /> : <FormLogin />}</div>
+return (
+  <div>{isMasuk ? <DashboardPengguna /> : <FormLogin />}</div>
 
-// Nama kelas kondisional
+  // Nama kelas kondisional
+)
 ;<button className={isAktif ? 'btn-aktif' : 'btn-nonaktif'}>Klik saya</button>
 ```
 
@@ -211,4 +213,4 @@ Operator ternary adalah alat yang ampuh untuk menulis pernyataan kondisional yan
 
 Ingat: kejelasan lebih penting daripada keringkasan. Jika operator ternary membuat kode kamu lebih sulit dipahami, lebih baik tetap menggunakan pernyataan if-else tradisional.
 
-**Happy Coding! ✌️**
+**Thanks for Reading! ✌️**

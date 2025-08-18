@@ -1,8 +1,17 @@
 const projectsData = [
   {
+    title: 'Hospitality CMS',
+    description: `Content Management for Hospitality TV Apps`,
+    imgSrc: '/static/images/hospitality-mockup.png',
+    slug: 'hospitality-cms', // Changed from href
+    techImg: {
+      Laravel: '/static/images/laravel.svg',
+    },
+  },
+  {
     title: 'Square Indonesia',
     description: `Square Indonesia is a digital marketing agency on a mission to empower businesses with impactful solutions that drive tangible results`,
-    imgSrc: '/static/images/square-indonesia.png',
+    imgSrc: '/static/images/square.png',
     slug: 'square-indonesia', // Changed from href
     techImg: {
       NextJS: '/static/images/next-js.svg',
@@ -23,22 +32,13 @@ const projectsData = [
   {
     title: 'Movie Apps',
     description: `A React-based movie discovery uilt with React 19, Vite, and TailwindCSS, the app integrates TMDB API for movie data and uses Appwrite as the backend database.`,
-    imgSrc: '/static/images/movie-app.png',
+    imgSrc: '/static/images/movie-app-preview.png',
     slug: 'movie-app', // Changed from href
     techImg: {
       React: '/static/images/react.svg',
       Appwrite: '/static/images/appwrite.svg',
     },
   },
-  // {
-  //   title: 'Hospitality CMS',
-  //   description: `Content Management for Hospitality TV Apps`,
-  //   // imgSrc: '/static/images/billing-dashboard.png',
-  //   slug: 'hospitality-cms', // Changed from href
-  //   techImg: {
-  //     Laravel: '/static/images/laravel.svg',
-  //   },
-  // },
   // {
   //   title: 'Square Indonesia',
   //   description: `Square Indonesia is a digital marketing agency on a mission to empower businesses with impactful solutions that drive tangible results. We believe in the power of integrity, goal-oriented strategies, and customer satisfaction to fuel success in the ever-evolving digital landscape.`,

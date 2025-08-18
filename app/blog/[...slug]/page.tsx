@@ -74,12 +74,6 @@ export async function generateMetadata({
   }
 }
 
-// export const generateStaticParams = async () => {
-//   const paths = allBlogs.map((p) => ({ slug: p.slug.split('/') }))
-
-//   return paths
-// }
-
 export const generateStaticParams = async () => {
   const paths = allBlogs.map((p) => ({
     slug: p.slug.split('/'), // This will now include the language prefix
@@ -90,9 +84,25 @@ export const generateStaticParams = async () => {
 
 export default async function Page({ params }: { params: { slug: string[] } }) {
   const slug = decodeURI(params.slug.join('/'))
-  // Filter out drafts in production
-  const sortedCoreContents = allCoreContent(sortPosts(allBlogs))
+
+  // Extract language from the current post's path
+  const currentPost = allBlogs.find((p) => p.slug === slug)
+  if (!currentPost) {
+    return notFound()
+  }
+
+  // Extract language from path (e.g., "blog/en/post-title" -> "en")
+  const currentLanguage = currentPost.path.split('/')[1] // "en" or "id"
+
+  // Filter posts by the same language before sorting
+  const languageFilteredPosts = allBlogs.filter(
+    (post) => post.path.split('/')[1] === currentLanguage
+  )
+
+  // Sort the filtered posts
+  const sortedCoreContents = allCoreContent(sortPosts(languageFilteredPosts))
   const postIndex = sortedCoreContents.findIndex((p) => p.slug === slug)
+
   if (postIndex === -1) {
     return notFound()
   }

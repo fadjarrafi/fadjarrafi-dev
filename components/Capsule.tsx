@@ -1,160 +1,31 @@
 import Image from 'next/image'
 
 export default function Capsule() {
+  const technologies = [
+    { name: 'PHP', icon: '/static/images/php.svg' },
+    { name: 'JavaScript', icon: '/static/images/javascript.svg' },
+    { name: 'Bootstrap', icon: '/static/images/bootstrap.svg' },
+    { name: 'Tailwind', icon: '/static/images/tailwind.svg' },
+    { name: 'jQuery', icon: '/static/images/jquery.svg' },
+    { name: 'Laravel', icon: '/static/images/laravel.svg' },
+    { name: 'Node.js', icon: '/static/images/nodejs.svg' },
+    { name: 'Next.js', icon: '/static/images/next-js.svg' },
+    { name: 'MySQL', icon: '/static/images/mysql.svg' },
+    { name: 'Git', icon: '/static/images/git.svg' },
+    { name: 'Postman', icon: '/static/images/postman.svg' },
+  ]
+
   return (
-    <div className="mr-3 flex flex-row flex-wrap gap-2 pt-3">
-      {/* <div className="capsule border border-gray-700">
-        <Image
-          src="/static/images/html.svg"
-          alt="html"
-          width={30}
-          height={30}
-          style={{ margin: '0' }}
-        />
-        <h4 style={{ margin: 'auto' }}>HTML</h4>
-      </div>
-      <div className="capsule border border-gray-700">
-        <Image
-          src="/static/images/css.svg"
-          alt="css"
-          width={30}
-          height={30}
-          style={{ margin: '0' }}
-        />
-        <h4 style={{ margin: 'auto' }}>CSS</h4>
-      </div> */}
-
-      <div className="capsule border border-gray-700">
-        <Image
-          src="/static/images/php.svg"
-          alt="php"
-          width={30}
-          height={30}
-          style={{ margin: 'auto 0' }}
-        />
-        <h4 style={{ margin: 'auto' }}>PHP</h4>
-      </div>
-
-      <div className="capsule border border-gray-700">
-        <Image
-          src="/static/images/javascript.svg"
-          alt="javascript"
-          width={30}
-          height={30}
-          style={{ margin: '0' }}
-        />
-        <h4 style={{ margin: 'auto' }}>Javascript</h4>
-      </div>
-
-      {/* <div className="capsule border border-gray-700">
-        <Image
-          src="/static/images/golang.svg"
-          alt="golang"
-          width={30}
-          height={30}
-          style={{ margin: '0' }}
-        />
-        <h4 style={{ margin: 'auto' }}>GO</h4>
-      </div> */}
-
-      <div className="capsule border border-gray-700">
-        <Image
-          src="/static/images/bootstrap.svg"
-          alt="bootstrap"
-          width={30}
-          height={30}
-          style={{ margin: '0' }}
-        />
-        <h4 style={{ margin: 'auto' }}>Bootstrap</h4>
-      </div>
-
-      <div className="capsule border border-gray-700">
-        <Image
-          src="/static/images/tailwind.svg"
-          alt="tailwind"
-          width={30}
-          height={30}
-          style={{ margin: '0' }}
-        />
-        <h4 style={{ margin: 'auto' }}>Tailwind</h4>
-      </div>
-
-      <div className="capsule border border-gray-700">
-        <Image
-          src="/static/images/jquery.svg"
-          alt="jquery"
-          width={30}
-          height={30}
-          style={{ margin: '0' }}
-        />
-        <h4 style={{ margin: 'auto' }}>JQuery</h4>
-      </div>
-
-      <div className="capsule border border-gray-700">
-        <Image
-          src="/static/images/laravel.svg"
-          alt="laravel"
-          width={30}
-          height={30}
-          style={{ margin: '0' }}
-        />
-        <h4 style={{ margin: 'auto' }}>Laravel</h4>
-      </div>
-
-      <div className="capsule border border-gray-700">
-        <Image
-          src="/static/images/nodejs.svg"
-          alt="nodejs"
-          width={30}
-          height={30}
-          style={{ margin: '0' }}
-        />
-        <h4 style={{ margin: 'auto' }}>Node JS</h4>
-      </div>
-
-      <div className="capsule border border-gray-700">
-        <Image
-          src="/static/images/next-js.svg"
-          alt="nextjs"
-          width={30}
-          height={30}
-          style={{ margin: '0' }}
-        />
-        <h4 style={{ margin: 'auto' }}>NextJS</h4>
-      </div>
-
-      <div className="capsule border border-gray-700">
-        <Image
-          src="/static/images/mysql.svg"
-          alt="mysql"
-          width={30}
-          height={30}
-          style={{ margin: '0' }}
-        />
-        <h4 style={{ margin: 'auto' }}>MySQL</h4>
-      </div>
-
-      <div className="capsule border border-gray-700">
-        <Image
-          src="/static/images/git.svg"
-          alt="git"
-          width={30}
-          height={30}
-          style={{ margin: 'auto 0' }}
-        />
-        <h4 style={{ margin: 'auto' }}>Git</h4>
-      </div>
-
-      <div className="capsule border border-gray-700">
-        <Image
-          src="/static/images/postman.svg"
-          alt="postman"
-          width={30}
-          height={30}
-          style={{ margin: '0' }}
-        />
-        <h4 style={{ margin: 'auto' }}>Postman</h4>
-      </div>
+    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+      {technologies.map((tech) => (
+        <div
+          key={tech.name}
+          className="flex items-center gap-3 rounded-lg border border-gray-200 bg-gray-50 p-3 transition-colors hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800/50 dark:hover:bg-gray-800"
+        >
+          <Image src={tech.icon} alt={tech.name} width={20} height={20} className="flex-shrink-0" />
+          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{tech.name}</span>
+        </div>
+      ))}
     </div>
   )
 }

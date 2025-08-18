@@ -2,7 +2,7 @@
 title: 'Master JavaScript Ternary Operator With Examples'
 date: '2024-09-28'
 language: 'en'
-tags: ['javascript', 'programming', 'web development']
+tags: ['javascript', 'es6']
 draft: false
 summary: "Master JavaScript's ternary operator - the concise alternative to if-else statements. Learn syntax, best practices, and real-world examples."
 canonicalUrl: https://fadjarrafi.com/blog/en/ternary-operator
@@ -50,9 +50,11 @@ Ternary operators are extremely common in React components for conditional rende
 
 ```jsx
 // Simple conditional rendering
-return <div>{isLoggedIn ? <UserDashboard /> : <LoginForm />}</div>
+return (
+  <div>{isLoggedIn ? <UserDashboard /> : <LoginForm />}</div>
 
-// Conditional class names
+  // Conditional class names
+)
 ;<button className={isActive ? 'btn-active' : 'btn-inactive'}>Click me</button>
 ```
 
@@ -211,4 +213,4 @@ The ternary operator is a powerful tool for writing concise conditional statemen
 
 Remember: clarity trumps brevity. If a ternary operator makes your code harder to understand, stick with traditional if-else statements.
 
-**Happy Coding! ✌️**
+**Thanks for Reading! ✌️**

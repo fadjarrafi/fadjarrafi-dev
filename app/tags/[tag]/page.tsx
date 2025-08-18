@@ -34,8 +34,20 @@ export default function TagPage({ params }: { params: { tag: string } }) {
   const tag = decodeURI(params.tag)
   // Capitalize first letter and convert space to dash
   const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1)
+
+  // Filter posts by tag AND language (English only)
   const filteredPosts = allCoreContent(
-    sortPosts(allBlogs.filter((post) => post.tags && post.tags.map((t) => slug(t)).includes(tag)))
+    sortPosts(
+      allBlogs.filter((post) => {
+        // Check if post has the tag
+        const hasTag = post.tags && post.tags.map((t) => slug(t)).includes(tag)
+        // Check if post is in English (path starts with "blog/en/")
+        const isEnglish = post.path.startsWith('blog/en/')
+
+        return hasTag && isEnglish
+      })
+    )
   )
+
   return <ListLayout posts={filteredPosts} title={title} />
 }

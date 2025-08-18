@@ -13,43 +13,69 @@ export default function AuthorLayout({ children, content }: Props) {
   const { name, avatar, occupation, company, email, instagram, linkedin, github } = content
 
   return (
-    <>
-      <div className="animate-slide-up-head divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="space-y-2 pb-8 pt-6 md:space-y-5">
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            About
-          </h1>
-        </div>
-        <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
-          <div className="flex flex-col items-center space-x-2 pt-8">
-            {avatar && (
-              <Image
-                src={avatar}
-                alt="avatar"
-                width={192}
-                height={192}
-                className="h-48 w-48 rounded-full"
-              />
-            )}
-            <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">{name}</h3>
-            <div className="text-gray-500 dark:text-gray-400">{occupation}</div>
-            <div className="text-gray-500 dark:text-gray-400">{company}</div>
-            <div className="flex space-x-3 pt-6">
-              <SocialIcon kind="mail" href={`mailto:${email}`} />
-              <SocialIcon kind="github" href={github} />
-              <SocialIcon kind="linkedin" href={linkedin} />
-              <SocialIcon kind="instagram" href={instagram} />
-            </div>
-          </div>
-          <div className="prose max-w-none pb-8 pt-8 dark:prose-invert xl:col-span-2">
-            {children}
-            <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">
-              This is the tech that I have learned and used:
-            </h3>
-            <Capsule />
+    <div className="mx-auto max-w-2xl px-6 py-16">
+      {/* Page Title */}
+      <div className="mb-16">
+        <h1 className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">About</h1>
+        <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+          Get to know more about me, my background, and the technologies I work with.
+        </p>
+      </div>
+
+      {/* Profile Section */}
+      <div className="mb-12">
+        <div className="mb-8 flex flex-col items-center text-center">
+          {avatar && (
+            <Image
+              src={avatar}
+              alt="avatar"
+              width={128}
+              height={128}
+              className="mb-4 h-32 w-32 rounded-full"
+            />
+          )}
+          <h2 className="mb-1 text-xl font-medium text-gray-900 dark:text-gray-100">{name}</h2>
+          <p className="mb-1 text-sm text-gray-500 dark:text-gray-400">{occupation}</p>
+          <p className="mb-6 text-sm text-gray-500 dark:text-gray-400">{company}</p>
+
+          {/* Social Links */}
+          <div className="flex space-x-4">
+            <SocialIcon kind="mail" href={`mailto:${email}`} />
+            <SocialIcon kind="github" href={github} />
+            <SocialIcon kind="linkedin" href={linkedin} />
+            <SocialIcon kind="instagram" href={instagram} />
           </div>
         </div>
       </div>
-    </>
+
+      {/* About Content */}
+      <div className="mb-12">
+        <div className="prose prose-sm max-w-none text-gray-600 dark:prose-invert dark:text-gray-400">
+          {children}
+        </div>
+      </div>
+
+      {/* Tech Stack Section */}
+      <div className="mb-12">
+        <h2 className="mb-6 text-sm font-medium text-gray-500 dark:text-gray-400">
+          Technologies & Tools
+        </h2>
+        <Capsule />
+      </div>
+
+      {/* Contact Section */}
+      <div className="border-t border-gray-200 pt-8 dark:border-gray-700">
+        <p className="text-sm text-gray-500 dark:text-gray-400">
+          Want to collaborate or just say hi?{' '}
+          <a
+            href={`mailto:${email}`}
+            className="underline transition-colors hover:text-lime-500 dark:hover:text-lime-400"
+          >
+            Drop me a line
+          </a>
+          .
+        </p>
+      </div>
+    </div>
   )
 }
