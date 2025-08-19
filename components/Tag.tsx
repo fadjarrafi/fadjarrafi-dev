@@ -1,10 +1,9 @@
+// components/Tag.tsx
 import Link from 'next/link'
 import { slug } from 'github-slugger'
-interface Props {
-  text: string
-}
+import { TagProps } from '@/types/components'
 
-const Tag = ({ text }: Props) => {
+export default function Tag({ text }: TagProps) {
   return (
     <Link
       href={`/tags/${slug(text)}`}
@@ -14,5 +13,3 @@ const Tag = ({ text }: Props) => {
     </Link>
   )
 }
-
-export default Tag

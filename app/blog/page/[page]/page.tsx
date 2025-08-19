@@ -2,25 +2,26 @@
 import ListLayout from '@/layouts/ListLayoutWithTags'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
-
-const POSTS_PER_PAGE = 5
+import { POSTS_PER_PAGE } from '@/lib/constants'
+import { getEnglishPosts, getSortedPosts } from '@/lib/utils/content'
 
 export const generateStaticParams = async () => {
-  // Filter English posts for pagination
-  const englishPosts = allBlogs.filter((post) => post._raw.flattenedPath.startsWith('blog/en/'))
+  const englishPosts = getEnglishPosts()
   const totalPages = Math.ceil(englishPosts.length / POSTS_PER_PAGE)
   const paths = Array.from({ length: totalPages }, (_, i) => ({ page: (i + 1).toString() }))
 
   return paths
 }
 
-export default function Page({ params }: { params: { page: string } }) {
-  // Filter English posts
-  const englishPosts = allBlogs.filter((post) => post._raw.flattenedPath.startsWith('blog/en/'))
-  const sortedPosts = sortPosts(englishPosts)
-  const posts = allCoreContent(sortedPosts)
+interface PageProps {
+  params: { page: string }
+}
 
-  const pageNumber = parseInt(params.page as string)
+export default function Page({ params }: PageProps) {
+  const englishPosts = getEnglishPosts()
+  const posts = getSortedPosts(englishPosts)
+
+  const pageNumber = parseInt(params.page)
   const initialDisplayPosts = posts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
     POSTS_PER_PAGE * pageNumber

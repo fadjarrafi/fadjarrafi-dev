@@ -1,3 +1,4 @@
+// layouts/PostLayout.tsx
 import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog, Authors } from 'contentlayer/generated'
@@ -10,29 +11,22 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
+import { createEditUrl, createDiscussUrl, getBasePath } from '@/lib/utils/paths'
+import { formatDateLong } from '@/lib/utils/date'
+import { PostLayoutProps } from '@/types/components'
 
-const editUrl = (path) => `${siteMetadata.siteRepo}/blob/main/data/${path}`
-const discussUrl = (path) =>
-  `https://mobile.twitter.com/search?q=${encodeURIComponent(`${siteMetadata.siteUrl}/${path}`)}`
+const editUrl = (path: string) => createEditUrl(path, siteMetadata.siteRepo)
+const discussUrl = (path: string) => createDiscussUrl(path, siteMetadata.siteUrl)
 
-const postDateTemplate: Intl.DateTimeFormatOptions = {
-  weekday: 'long',
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-}
-
-interface LayoutProps {
-  content: CoreContent<Blog>
-  authorDetails: CoreContent<Authors>[]
-  next?: { path: string; title: string }
-  prev?: { path: string; title: string }
-  children: ReactNode
-}
-
-export default function PostLayout({ content, authorDetails, next, prev, children }: LayoutProps) {
+export default function PostLayout({
+  content,
+  authorDetails,
+  next,
+  prev,
+  children,
+}: PostLayoutProps) {
   const { filePath, path, slug, date, title, tags } = content
-  const basePath = path.split('/')[0]
+  const basePath = getBasePath(path)
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-16">
@@ -43,9 +37,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
         <header className="mb-12">
           <div className="mb-4">
             <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-              <time dateTime={date}>
-                {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
-              </time>
+              <time dateTime={date}>{formatDateLong(date, siteMetadata.locale)}</time>
             </p>
             <h1 className="text-2xl font-bold leading-tight text-gray-900 dark:text-gray-100">
               {title}

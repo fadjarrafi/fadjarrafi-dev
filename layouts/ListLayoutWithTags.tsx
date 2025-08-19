@@ -1,3 +1,4 @@
+// layouts/ListLayoutWithTags.tsx
 'use client'
 
 import { usePathname } from 'next/navigation'
@@ -9,20 +10,10 @@ import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import tagData from 'app/tag-data.json'
+import { ListLayoutProps } from '@/types/components'
+import { TagData } from '@/types'
 
-interface PaginationProps {
-  totalPages: number
-  currentPage: number
-}
-
-interface ListLayoutProps {
-  posts: CoreContent<Blog>[]
-  title: string
-  initialDisplayPosts?: CoreContent<Blog>[]
-  pagination?: PaginationProps
-}
-
-function Pagination({ totalPages, currentPage }: PaginationProps) {
+function Pagination({ totalPages, currentPage }: { totalPages: number; currentPage: number }) {
   const pathname = usePathname()
   const basePath = pathname.split('/')[1]
   const prevPage = currentPage - 1 > 0
@@ -72,7 +63,7 @@ export default function ListLayoutWithTags({
   pagination,
 }: ListLayoutProps) {
   const pathname = usePathname() || ''
-  const tagCounts = tagData as Record<string, number>
+  const tagCounts = tagData as TagData
   const tagKeys = Object.keys(tagCounts)
   const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
 
