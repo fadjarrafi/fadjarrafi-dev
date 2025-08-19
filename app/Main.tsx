@@ -1,16 +1,14 @@
-// app/Main.tsx
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
-import Image from '@/components/Image'
 import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 import projectsData from '@/data/projectsData'
-import { MAX_DISPLAY_POSTS } from '@/lib/constants'
-import type { CoreContent } from 'pliny/utils/contentlayer'
-import type { Blog } from 'contentlayer/generated'
+import { ProjectData } from '@/types/index' // Add this import
+
+const MAX_DISPLAY = 5
 
 interface MainProps {
-  posts: CoreContent<Blog>[]
+  posts: any[] // You might want to type this properly too
 }
 
 export default function Home({ posts }: MainProps) {
@@ -69,18 +67,15 @@ export default function Home({ posts }: MainProps) {
         <h2 className="mb-8 text-sm font-medium text-gray-500 dark:text-gray-400">Selected Work</h2>
 
         <div className="grid gap-6 md:grid-cols-2">
-          {projectsData.map((project) => (
+          {projectsData.map((project: ProjectData) => (
             <div key={project.slug} className="group">
               <Link href={`/projects/${project.slug}`} className="block">
-                {/* Project Image - Fixed with proper dimensions */}
+                {/* Project Image */}
                 <div className="mb-3 aspect-video overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800">
-                  <Image
+                  <img
                     src={project.imgSrc}
                     alt={project.title}
-                    width={640} // 16:9 aspect ratio width
-                    height={360} // 16:9 aspect ratio height
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
 
@@ -96,19 +91,15 @@ export default function Home({ posts }: MainProps) {
                   {/* Tech Stack */}
                   {project.techImg && Object.keys(project.techImg).length > 0 && (
                     <div className="flex gap-2">
-                      {Object.entries(project.techImg)
-                        .filter(([, imgSrc]) => imgSrc) // Filter out undefined values
-                        .map(([tech, imgSrc]) => (
-                          <Image
-                            key={tech}
-                            src={imgSrc}
-                            alt={tech}
-                            width={16}
-                            height={16}
-                            className="h-4 w-4 opacity-60 transition-opacity group-hover:opacity-100"
-                            title={tech}
-                          />
-                        ))}
+                      {Object.entries(project.techImg).map(([tech, imgSrc]) => (
+                        <img
+                          key={tech}
+                          src={imgSrc}
+                          alt={tech}
+                          className="h-4 w-4 opacity-60 transition-opacity group-hover:opacity-100"
+                          title={tech}
+                        />
+                      ))}
                     </div>
                   )}
                 </div>
@@ -138,7 +129,7 @@ export default function Home({ posts }: MainProps) {
           {!englishPosts.length && (
             <p className="text-sm text-gray-600 dark:text-gray-400">No posts found.</p>
           )}
-          {englishPosts.slice(0, MAX_DISPLAY_POSTS).map((post) => {
+          {englishPosts.slice(0, MAX_DISPLAY).map((post) => {
             const { slug, date, title, summary, tags, path } = post
             return (
               <div key={slug}>
@@ -165,7 +156,7 @@ export default function Home({ posts }: MainProps) {
         </div>
 
         {/* View All Posts Link */}
-        {englishPosts.length > MAX_DISPLAY_POSTS && (
+        {englishPosts.length > MAX_DISPLAY && (
           <div className="mt-8 pt-4">
             <Link
               href="/blog"

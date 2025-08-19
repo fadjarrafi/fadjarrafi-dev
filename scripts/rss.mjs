@@ -1,27 +1,11 @@
-// scripts/rss.mjs
-import { writeFileSync, mkdirSync, readFileSync } from 'fs'
+import { writeFileSync, mkdirSync } from 'fs'
 import path from 'path'
-import { fileURLToPath } from 'url'
 import GithubSlugger from 'github-slugger'
 import { escape } from 'pliny/utils/htmlEscaper.js'
 import siteMetadata from '../data/siteMetadata.js'
+import tagData from '../app/tag-data.json' with { type: 'json' }
 import { allBlogs } from '../.contentlayer/generated/index.mjs'
 import { sortPosts } from 'pliny/utils/contentlayer.js'
-
-// Get current directory for ES modules
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-
-// Read tag data synchronously
-const tagDataPath = path.join(__dirname, '../app/tag-data.json')
-let tagData = {}
-try {
-  const tagDataContent = readFileSync(tagDataPath, 'utf8')
-  tagData = JSON.parse(tagDataContent)
-} catch (error) {
-  console.warn('Could not read tag-data.json:', error.message)
-  tagData = {}
-}
 
 const generateRssItem = (config, post) => `
   <item>
@@ -53,38 +37,27 @@ const generateRss = (config, posts, page = 'feed.xml') => `
 
 async function generateRSS(config, allBlogs, page = 'feed.xml') {
   const publishPosts = allBlogs.filter((post) => post.draft !== true)
-
   // RSS for blog post
   if (publishPosts.length > 0) {
     const rss = generateRss(config, sortPosts(publishPosts))
     writeFileSync(`./public/${page}`, rss)
   }
 
-  // Generate RSS for each tag
   if (publishPosts.length > 0) {
     for (const tag of Object.keys(tagData)) {
-      const filteredPosts = allBlogs.filter(
-        (post) => post.tags && post.tags.map((t) => GithubSlugger.slug(t)).includes(tag)
+      const filteredPosts = allBlogs.filter((post) =>
+        post.tags.map((t) => GithubSlugger.slug(t)).includes(tag)
       )
-
-      if (filteredPosts.length > 0) {
-        const rss = generateRss(config, filteredPosts, `tags/${tag}/${page}`)
-        const rssPath = path.join('public', 'tags', tag)
-        mkdirSync(rssPath, { recursive: true })
-        writeFileSync(path.join(rssPath, page), rss)
-      }
+      const rss = generateRss(config, filteredPosts, `tags/${tag}/${page}`)
+      const rssPath = path.join('public', 'tags', tag)
+      mkdirSync(rssPath, { recursive: true })
+      writeFileSync(path.join(rssPath, page), rss)
     }
   }
 }
 
 const rss = () => {
-  try {
-    generateRSS(siteMetadata, allBlogs)
-    console.log('RSS feed generated...')
-  } catch (error) {
-    console.error('Error generating RSS:', error)
-    process.exit(1)
-  }
+  generateRSS(siteMetadata, allBlogs)
+  console.log('RSS feed generated...')
 }
-
 export default rss
