@@ -1,12 +1,16 @@
 // types/index.ts
 export type SupportedLanguage = 'en' | 'id'
 
+export interface TechImage {
+  [key: string]: string
+}
+
 export interface ProjectData {
   title: string
   description: string
   imgSrc: string
   slug: string
-  techImg: Record<string, string>
+  techImg: TechImage
 }
 
 export interface SnippetData {
