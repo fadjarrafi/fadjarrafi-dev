@@ -3,12 +3,14 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 import projectsData from '@/data/projectsData'
-import { ProjectData } from '@/types/index' // Add this import
+import { ProjectData } from '@/types/index'
+import { CoreContent } from 'pliny/utils/contentlayer'
+import type { Blog } from 'contentlayer/generated'
 
 const MAX_DISPLAY = 5
 
 interface MainProps {
-  posts: any[] // You might want to type this properly too
+  posts: CoreContent<Blog>[]
 }
 
 export default function Home({ posts }: MainProps) {
