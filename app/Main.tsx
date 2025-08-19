@@ -1,7 +1,7 @@
 // app/Main.tsx
-import Image from 'next/image'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
+import Image from '@/components/Image'
 import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 import projectsData from '@/data/projectsData'
@@ -72,12 +72,15 @@ export default function Home({ posts }: MainProps) {
           {projectsData.map((project) => (
             <div key={project.slug} className="group">
               <Link href={`/projects/${project.slug}`} className="block">
-                {/* Project Image */}
+                {/* Project Image - Fixed with proper dimensions */}
                 <div className="mb-3 aspect-video overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800">
                   <Image
                     src={project.imgSrc}
                     alt={project.title}
+                    width={640} // 16:9 aspect ratio width
+                    height={360} // 16:9 aspect ratio height
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
 
@@ -91,17 +94,21 @@ export default function Home({ posts }: MainProps) {
                   </p>
 
                   {/* Tech Stack */}
-                  {project.techImg && (
+                  {project.techImg && Object.keys(project.techImg).length > 0 && (
                     <div className="flex gap-2">
-                      {Object.entries(project.techImg).map(([tech, imgSrc]) => (
-                        <Image
-                          key={tech}
-                          src={imgSrc}
-                          alt={tech}
-                          className="h-4 w-4 opacity-60 transition-opacity group-hover:opacity-100"
-                          title={tech}
-                        />
-                      ))}
+                      {Object.entries(project.techImg)
+                        .filter(([, imgSrc]) => imgSrc) // Filter out undefined values
+                        .map(([tech, imgSrc]) => (
+                          <Image
+                            key={tech}
+                            src={imgSrc}
+                            alt={tech}
+                            width={16}
+                            height={16}
+                            className="h-4 w-4 opacity-60 transition-opacity group-hover:opacity-100"
+                            title={tech}
+                          />
+                        ))}
                     </div>
                   )}
                 </div>

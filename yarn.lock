@@ -2708,6 +2708,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mermaid-js/parser@npm:^0.6.2":
+  version: 0.6.2
+  resolution: "@mermaid-js/parser@npm:0.6.2"
+  dependencies:
+    langium: 3.3.1
+  checksum: 4ed8e11731429b444f2aa4c59c420a45960ecfa2efeb0f7065fdc78fec3ea7e9872280ae47baa844665fce030c5d96addcc31cfd4d1c8046b384397b8d55643e
+  languageName: node
+  linkType: hard
+
 "@next/bundle-analyzer@npm:14.0.3":
   version: 14.0.3
   resolution: "@next/bundle-analyzer@npm:14.0.3"
@@ -3862,6 +3871,15 @@ __metadata:
   version: 2.0.10
   resolution: "@types/mdx@npm:2.0.10"
   checksum: 3e2fb24b7bfae739a59573344171292b6c31256ad9afddc00232e9de4fbc97b270e1a11d13cb935cba0d9bbb9bc7348793eda82ee752233c5d2289f4b897f719
+  languageName: node
+  linkType: hard
+
+"@types/mermaid@npm:^9.2.0":
+  version: 9.2.0
+  resolution: "@types/mermaid@npm:9.2.0"
+  dependencies:
+    mermaid: "*"
+  checksum: 2ff5868e90b2fa741d5df3a317224bd2b110eb04ee2c6f184d19ac58c90abd15c8f6f30645f530f46689a1e080676e0b837b1e05254458226c265047934b92c4
   languageName: node
   linkType: hard
 
@@ -9611,7 +9629,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"katex@npm:^0.16.9":
+"katex@npm:^0.16.22, katex@npm:^0.16.9":
   version: 0.16.22
   resolution: "katex@npm:0.16.22"
   dependencies:
@@ -10022,6 +10040,15 @@ __metadata:
   bin:
     marked: bin/marked.js
   checksum: 2ac72fc0bc7ecb47de246e396c7054d311f55379957e4e01796c12d196cb84480e8d53e54948f957a078f9166692fea8b0309fc597f26f855573e7ba5c1ec7eb
+  languageName: node
+  linkType: hard
+
+"marked@npm:^16.0.0":
+  version: 16.2.0
+  resolution: "marked@npm:16.2.0"
+  bin:
+    marked: bin/marked.js
+  checksum: a7c6c7d8c21970e06d6157c858a971ded9a36dec5aba1849fc0824fe374f4ebb3cd2e3b8dfce85e1e5f8a26adc13aa785635fc024324bd5af1625d49f4fee6fe
   languageName: node
   linkType: hard
 
@@ -10472,6 +10499,34 @@ __metadata:
     playwright:
       optional: true
   checksum: 0a7f921b53c61e7d4cb23fe12bf8cd8a5d47834cf93a5d3c3bbf3ababdd4e9e787f7dfbc1a9408e00b5454d297119df23584293d89553edd0ed4ffaf1f52bf3c
+  languageName: node
+  linkType: hard
+
+"mermaid@npm:*, mermaid@npm:^11.10.0":
+  version: 11.10.0
+  resolution: "mermaid@npm:11.10.0"
+  dependencies:
+    "@braintree/sanitize-url": ^7.0.4
+    "@iconify/utils": ^2.1.33
+    "@mermaid-js/parser": ^0.6.2
+    "@types/d3": ^7.4.3
+    cytoscape: ^3.29.3
+    cytoscape-cose-bilkent: ^4.1.0
+    cytoscape-fcose: ^2.2.0
+    d3: ^7.9.0
+    d3-sankey: ^0.12.3
+    dagre-d3-es: 7.0.11
+    dayjs: ^1.11.13
+    dompurify: ^3.2.5
+    katex: ^0.16.22
+    khroma: ^2.1.0
+    lodash-es: ^4.17.21
+    marked: ^16.0.0
+    roughjs: ^4.6.6
+    stylis: ^4.3.6
+    ts-dedent: ^2.2.0
+    uuid: ^11.1.0
+  checksum: 1af6acfb6aed4efc494d26fda6f3e4a5fe4c07a2885ad50be127d6f0408bb9b68ab96e383bf870a93a6ae4d7e7d98470ce87eb7aa71269cf0efa854e398cc97c
   languageName: node
   linkType: hard
 
@@ -14560,6 +14615,7 @@ __metadata:
     "@tailwindcss/forms": ^0.5.4
     "@tailwindcss/typography": ^0.5.9
     "@types/mdx": ^2.0.5
+    "@types/mermaid": ^9.2.0
     "@types/react": ^18.2.14
     "@typescript-eslint/eslint-plugin": ^6.1.0
     "@typescript-eslint/parser": ^6.1.0
@@ -14576,6 +14632,7 @@ __metadata:
     husky: ^8.0.0
     image-size: 1.0.0
     lint-staged: ^13.0.0
+    mermaid: ^11.10.0
     next: 14.0.3
     next-contentlayer: 0.3.4
     next-themes: ^0.2.1
