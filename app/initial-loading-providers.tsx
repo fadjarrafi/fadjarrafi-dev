@@ -1,9 +1,14 @@
+// app/initial-loading-providers.tsx
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, ReactNode } from 'react'
 import Loading from './loading'
 
-export default function InitialLoadingProvider({ children }) {
+interface InitialLoadingProviderProps {
+  children: ReactNode
+}
+
+export default function InitialLoadingProvider({ children }: InitialLoadingProviderProps) {
   const [isInitialLoad, setIsInitialLoad] = useState(true)
 
   useEffect(() => {
@@ -11,5 +16,5 @@ export default function InitialLoadingProvider({ children }) {
   }, [])
 
   if (isInitialLoad) return <Loading />
-  return children
+  return <>{children}</>
 }
