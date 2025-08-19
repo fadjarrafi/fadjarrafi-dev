@@ -1,3 +1,4 @@
+// app/blog/[...slug]/page.tsx
 import 'css/prism.css'
 import 'katex/dist/katex.css'
 
@@ -14,11 +15,19 @@ import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
 import { notFound } from 'next/navigation'
 
-const defaultLayout = 'PostLayout'
+// Define the layout types properly
+type LayoutKey = 'PostSimple' | 'PostLayout' | 'PostBanner'
+const defaultLayout: LayoutKey = 'PostLayout'
+
 const layouts = {
   PostSimple,
   PostLayout,
   PostBanner,
+} as const
+
+// Type guard to check if layout is valid
+function isValidLayout(layout: string | undefined): layout is LayoutKey {
+  return layout !== undefined && layout in layouts
 }
 
 export async function generateMetadata({
@@ -124,7 +133,9 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
     }
   })
 
-  const Layout = layouts[post.layout || defaultLayout]
+  // Safely get the layout with fallback
+  const layoutKey = isValidLayout(post.layout) ? post.layout : defaultLayout
+  const Layout = layouts[layoutKey]
 
   return (
     <>
