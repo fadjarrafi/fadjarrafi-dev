@@ -1,5 +1,6 @@
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
+import Image from '@/components/Image'
 import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 import projectsData from '@/data/projectsData'
@@ -11,7 +12,7 @@ export default function Home({ posts }) {
   const englishPosts = posts.filter((post) => post.path.startsWith('blog/en/'))
 
   return (
-    <div className="mx-auto max-w-2xl px-6 py-16">
+    <div className="mx-auto max-w-4xl px-6">
       {/* Hero Section */}
       <div className="mb-16">
         <p className="mb-8 text-lg leading-relaxed">
@@ -27,32 +28,24 @@ export default function Home({ posts }) {
         </p>
 
         {/* Action Buttons */}
-        <div className="flex flex-row gap-4">
+        <div className="flex flex-row gap-6">
           <Link
             href="/about"
-            className="inline-block rounded bg-gradient-to-r from-green-400 to-blue-500 px-4 py-2 text-sm font-medium text-white transition-colors duration-300 hover:from-pink-500 hover:to-yellow-500"
+            className="group text-sm text-lime-500 transition-colors duration-300 hover:text-lime-600 dark:text-lime-400 dark:hover:text-lime-300"
           >
-            About Me
+            Who Am I{' '}
+            <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+              →
+            </span>
           </Link>
           <Link
             href="https://drive.google.com/file/d/1ksKTxX59HNYRzj1t3D7xV1QH9XpRC7_I/view?usp=sharing"
-            className="relative inline-block rounded bg-transparent px-4 py-2 text-sm font-medium text-transparent transition-colors duration-300 hover:text-white"
-            style={{
-              backgroundImage: 'linear-gradient(to right, rgb(74, 222, 128), rgb(59, 130, 246))',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-            }}
+            className="group text-sm text-gray-800 transition-colors duration-300 hover:text-lime-500 dark:text-gray-200 dark:hover:text-lime-400"
           >
-            <span
-              className="absolute inset-0 rounded border-2 border-transparent bg-gradient-to-r from-green-400 to-blue-500 opacity-100 transition-all duration-300 hover:opacity-100"
-              style={{
-                mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                maskComposite: 'exclude',
-                WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                WebkitMaskComposite: 'xor',
-              }}
-            ></span>
-            Check Out My CV
+            Check Out My CV{' '}
+            <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+              →
+            </span>
           </Link>
         </div>
       </div>
@@ -67,10 +60,13 @@ export default function Home({ posts }) {
               <Link href={`/projects/${project.slug}`} className="block">
                 {/* Project Image */}
                 <div className="mb-3 aspect-video overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800">
-                  <img
+                  <Image
                     src={project.imgSrc}
                     alt={project.title}
+                    width={640} // 16:9 aspect ratio width
+                    height={360} // 16:9 aspect ratio height
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
 
@@ -87,10 +83,12 @@ export default function Home({ posts }) {
                   {project.techImg && (
                     <div className="flex gap-2">
                       {Object.entries(project.techImg).map(([tech, imgSrc]) => (
-                        <img
+                        <Image
                           key={tech}
                           src={imgSrc}
                           alt={tech}
+                          width={16}
+                          height={16}
                           className="h-4 w-4 opacity-60 transition-opacity group-hover:opacity-100"
                           title={tech}
                         />

@@ -15,7 +15,7 @@ import { Suspense } from 'react'
 import Loading from './loading'
 import InitialLoadingProvider from './initial-loading-providers'
 
-const space_grotesk = Space_Grotesk({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-space-grotesk',
@@ -71,7 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang={siteMetadata.language}
-      className={`${space_grotesk.variable} scroll-smooth`}
+      className={`${spaceGrotesk.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <head>

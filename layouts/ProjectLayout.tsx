@@ -35,7 +35,7 @@ export default function ProjectLayout({ content, children }: LayoutProps) {
     typeof techStack === 'string' ? JSON.parse(techStack) : (techStack as TechStack[])
 
   return (
-    <div className="mx-auto max-w-2xl px-6 py-16">
+    <div className="mx-auto max-w-3xl px-6">
       <ScrollTopAndComment />
 
       <article>

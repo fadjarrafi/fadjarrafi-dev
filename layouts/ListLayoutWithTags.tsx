@@ -79,10 +79,10 @@ export default function ListLayoutWithTags({
   const displayPosts = initialDisplayPosts.length > 0 ? initialDisplayPosts : posts
 
   return (
-    <div className="mx-auto max-w-4xl px-6 py-16">
+    <div className="mx-auto max-w-4xl px-6">
       {/* Page Title */}
       <div className="mb-16">
-        <h1 className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">{title}</h1>
+        <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-gray-100">{title}</h1>
         <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
           I learn best by pouring my thoughts into writing. Here's where I share discoveries,
           document my growth, and explore new technologies—usually with a fresh cup of coffee
@@ -174,7 +174,9 @@ export default function ListLayoutWithTags({
 
           {/* Pagination */}
           {pagination && pagination.totalPages > 1 && (
-            <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
+            <div className="mb-16">
+              <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
+            </div>
           )}
         </div>
       </div>

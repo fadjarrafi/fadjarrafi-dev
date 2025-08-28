@@ -22,7 +22,7 @@ const projectsData = [
   {
     title: 'Billing E-Cafe',
     description: `Monitoring billing e-cafe`,
-    imgSrc: '/static/images/billing-dashboard.png',
+    imgSrc: '/static/images/billing-dashboard-mockup.png',
     slug: 'billing-ecafe', // Changed from href
     techImg: {
       NextJS: '/static/images/next-js.svg',
