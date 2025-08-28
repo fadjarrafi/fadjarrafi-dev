@@ -30,32 +30,12 @@ For the search functionality, I implemented a debouncing system using the useDeb
 
 ```js
 // The magic happens here - balancing responsiveness with efficiency
-useDebounce(() => setDebouncedSearchTerm(searchTerm), 500, [searchTerm]);
+useDebounce(() => setDebouncedSearchTerm(searchTerm), 500, [searchTerm])
 ```
 
 After 500 milliseconds, the application triggers `useEffect debounce Search Term` which will then synchronize data from the `/search/movie?query=${encodeURIComponent(query)}` endpoint.
 
 Instead, the search system delays the request for 500 milliseconds. This prevents API spam and improves the user experience. After 500 milliseconds, the application triggers another useEffect for the debounced search term, which then fetches data from the `/search/movie?query=${encodeURIComponent(query)}` endpoint.
-
-<div className="bg-white p-6 rounded-lg shadow-lg">
-  ```mermaid
-  sequenceDiagram
-  participant User
-  participant SearchInput
-  participant DebounceHook
-  participant TMDBAPI
-  participant AppwriteDB
-  participant MovieList
-
-  User->>SearchInput: Types movie name
-  SearchInput->>DebounceHook: Search term
-  Note over DebounceHook: Waits 500ms
-  DebounceHook->>TMDBAPI: Fetch movies
-  TMDBAPI-->>MovieList: Movie results
-  DebounceHook->>AppwriteDB: Update search count
-  AppwriteDB-->>AppwriteDB: Increment popularity
-  ```
-</div>
 
 Throughout the development, I implemented proper error handling and loading states using useState hooks to manage different UI conditions. The application shows a spinner during API calls and displays error messages when requests fail, providing better user feedback.
 
@@ -72,4 +52,3 @@ For production deployment, I configured the application with environment variabl
 **Explore the Code**: https://github.com/fadjarrafi/movie-app
 
 **Built With**: React, Vite, Tailwind CSS, Appwrite, and TMDB API
-
